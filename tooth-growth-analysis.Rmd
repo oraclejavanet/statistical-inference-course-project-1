@@ -1,0 +1,40 @@
+---
+title: "Statistical Inference Course Project (Part 2)"
+author: "Jeffrey M. Hunter"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    theme: cosmo
+    keep_md: no
+    df_print: paged
+  pdf_document:
+    toc: yes
+    df_print: kable
+    number_sections: false
+    fig_caption: yes
+    highlight: tango
+    dev: pdf
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.path='figures/')
+```
+
+## Overview
+
+
+
+## Basic Summary
+
+
+
+## Confidence Intervals
+
+
+## Hypothesis Test
+
+
+## Conclusion
+
