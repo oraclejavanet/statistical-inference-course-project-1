@@ -30,6 +30,17 @@ the population (generally sample sizes over 30), then the distribution of the
 sample means will be approximately normally distributed about the population
 mean $\mu$ - no matter the shape of the population distribution.
 
+This project explores the Central Limit Theorem using the exponential
+distribution in R. The theoretical normal distribution will be compared to the
+distribution of calculated means of samples from the exponential distribution.
+
+## Simulations
+
+*Pending*
+
+Perform 1000 simulations on 40 samples which are exponentially distributed
+with `lambda = 0.2`, then take the mean of each simulation.
+
 In this project, investigate the exponential distribution in R and compare it
 with the Central Limit Theorem (CLM). The exponential distribution will be
 simulated in R with `rexp(n, lambda)` where lambda is the rate parameter.
@@ -39,7 +50,11 @@ deviation is also `1/lambda`. Lambda will be set to `lambda = 0.2` for all of
 the simulations. An investigation will be performed on the distribution via
 simulation of averages of 40 exponentials for one thousand simulations.
 
-## Simulations
+
+
+
+
+
 
 ```{r exp-simulation, echo = TRUE}
 # load libraries
@@ -56,43 +71,28 @@ lambda <- 0.2             # rate parameter
 n <- 40                   # number of samples (exponentials) in each simulation
 numSimulations <- 1000    # number of simulations
 
-# simulate the population by appending each sample mean to a vector
-#simMeans = NULL
-#for (i in 1 : numSimulations) {
-#    simSample <- rexp(n, lambda)
-#    simMeans <- c(simMeans, mean(simSample))
-#}
-#sampleMean <- mean(simMeans)
-#theoMean <- 1/lambda
+# simulate the population
+simMeans <- data.frame(mValue = sapply(1 : numSimulations, function(x) {mean(rexp(n, lambda))}))
 
-simMeans <- data.frame(x=sapply(1 : 1000, function(x) {mean(rexp(n, lambda))}))
-head(simMeans)
-
-#print(sampleMean)
-#print(theoMean)
-
-# plot the means distribution
-
-#hist.pop <- ggplot(simMeans, aes(x = x)) + 
-#  geom_histogram(aes(y=..count.., fill=..count..)) +
-#  labs(title="Histogram for Averages of 40 Exponentials over 1000 Simulations", y="Frequency", x="Mean")
-#hist.pop
-
-expSimulationMeansChart <- ggplot(simMeans, aes(x = x)) +
-                                  geom_histogram(binwidth = 0.25, aes(y = ..count.., fill = ..count..)) +
+# plot the distribution
+expSimulationMeansChart <- ggplot(simMeans, aes(x = mValue)) +
+                                  geom_histogram(binwidth = 0.15, color = "white", fill = rgb(0.2,0.7,0.1,0.4))  +
                                   xlab("Mean") +
                                   ylab("Frequency") +
                                   theme(plot.title = element_text(size = 14, hjust = 0.5)) +
-                                  ggtitle("Exponential Simulation Means")
+                                  ggtitle("Histogram of Exponential Simulation Means")
 print(expSimulationMeansChart)
 
 ```
 
-## Sample Mean versus Theoretical Mean
+## Sample Mean vs Theoretical Mean
 
+sampleMean <- mean(simMeans$mValue)
+theoMean <- 1/lambda
+print(sampleMean)
+print(theoMean)
 
-
-## Sample Variance versus Theoretical Variance
+## Sample Variance vs Theoretical Variance
 
 
 
