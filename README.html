@@ -195,56 +195,60 @@ $(document).ready(function () {
 <div id="statistical-inference-course-project-1" class="section level1">
 <h1>Statistical Inference Course Project 1</h1>
 <p><strong>Jeffrey M. Hunter</strong></p>
-<p>April 29, 2019</p>
-<div id="instructions" class="section level3">
-<h3>Instructions</h3>
-<p>The project consists of two parts:</p>
-<ol style="list-style-type: decimal">
-<li>A simulation exercise.</li>
-<li>Basic inferential data analysis.</li>
-</ol>
-<p>You will create a report to answer the questions. Given the nature of the series, ideally you’ll use knitr to create the reports and convert to a pdf. (I will post a very simple introduction to knitr). <strong>However, feel free to use whatever software that you would like to create your pdf.</strong></p>
-<p><strong>Each pdf report should be no more than 3 pages with 3 pages of supporting appendix material if needed (code, figures, etcetera).</strong></p>
-</div>
-<div id="part-1-simulation-exercise-instructions" class="section level3">
-<h3>Part 1: Simulation Exercise Instructions</h3>
-<p>In this project you will investigate the exponential distribution in R and compare it with the Central Limit Theorem. The exponential distribution can be simulated in R with <code>rexp(n, lambda)</code> where lambda is the rate parameter. The mean of exponential distribution is <code>1/lambda</code> and the standard deviation is also <code>1/lambda</code>. Set <code>lambda = 0.2</code> for all of the simulations. You will investigate the distribution of averages of 40 exponentials. Note that you will need to do a thousand simulations.</p>
-<p>Illustrate via simulation and associated explanatory text the properties of the distribution of the mean of 40 exponentials. You should</p>
+<p>May 6, 2019</p>
+<p>The project consists of two parts.</p>
+<div id="part-1-simulation-exercise-instructions" class="section level4">
+<h4>Part 1: Simulation Exercise Instructions</h4>
+<p>Investigate an exponential distribution in R and compare it with the Central Limit Theorem (CLM). The exponential distribution will be simulated in R with <code>rexp(n, lambda)</code> where lambda is the rate parameter.</p>
+<p>The mean of the exponential distribution is <code>1/lambda</code> and the standard deviation is also <code>1/lambda</code>. Lambda will be set to <code>lambda = 0.2</code> for all of the simulations. An investigation will be performed on the distribution of averages of 40 exponentials for one thousand simulations.</p>
+<p>Illustrate via simulation and associated explanatory text the properties of the distribution of the mean of 40 exponentials.</p>
+<p>Use RStudio and knitr to create a report in PDF format to:</p>
 <ol style="list-style-type: decimal">
 <li><p>Show the sample mean and compare it to the theoretical mean of the distribution.</p></li>
 <li><p>Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.</p></li>
 <li><p>Show that the distribution is approximately normal.</p></li>
 </ol>
-<p>In point 3, focus on the difference between the distribution of a large collection of random exponential and the distribution of a large collection of averages of 40 exponentials.</p>
-<p>As a motivating example, compare the distribution of 1000 random uniforms</p>
-<pre class="{r}"><code>hist(runif(1000))</code></pre>
-<p>and the distribution of 1000 averages of 40 random uniforms</p>
-<pre class="{r}"><code>mns = NULL
-for (i in 1 : 1000) mns = c(mns, mean(runif(40)))
-hist(mns)</code></pre>
-<p>This distribution looks far more Gaussian than the original uniform distribution!</p>
-<p>This exercise is asking you to use your knowledge of the theory given in class to relate the two distributions.</p>
-<p><strong>Sample Project Report Structure</strong></p>
-<p>Of course, there are multiple ways one could structure a report to address the requirements above. However, the more clearly you pose and answer each question, the easier it will be for reviewers to clearly identify and evaluate your work.</p>
-<p>A sample set of headings that could be used to guide the creation of your report might be:</p>
+<p>The PDF report should be no more than 3 pages with 3 pages of supporting appendix material if needed (code, figures, etcetera).</p>
+<p>In order to address the requirements above and make it easy for reviewers to clearly identify and evaluate the work, the project report will be structured using the following headings:</p>
 <ul>
-<li><p>Title (give an appropriate title) and Author Name</p></li>
-<li><p>Overview: In a few (2-3) sentences explain what is going to be reported on.</p></li>
-<li><p>Simulations: Include English explanations of the simulations you ran, with the accompanying R code. Your explanations should make clear what the R code accomplishes.</p></li>
-<li><p>Sample Mean versus Theoretical Mean: Include figures with titles. In the figures, highlight the means you are comparing. Include text that explains the figures and what is shown on them, and provides appropriate numbers.</p></li>
-<li><p>Sample Variance versus Theoretical Variance: Include figures (output from R) with titles. Highlight the variances you are comparing. Include text that explains your understanding of the differences of the variances.</p></li>
-<li><p>Distribution: Via figures and text, explain how one can tell the distribution is approximately normal.</p></li>
+<li><p><strong>Title</strong>: provide an appropriate title and include the author’s name</p></li>
+<li><p><strong>Overview</strong>: In a few (2-3) sentences, explain what is going to be reported on.</p></li>
+<li><p><strong>Simulations</strong>: Include English explanations of the simulations you ran, with the accompanying R code. Your explanations should make clear what the R code accomplishes.</p></li>
+<li><p><strong>Sample Mean versus Theoretical Mean</strong>: Include figures with titles. In the figures, highlight the means you are comparing. Include text that explains the figures and what is shown on them, and provides appropriate numbers.</p></li>
+<li><p><strong>Sample Variance versus Theoretical Variance</strong>: Include figures (output from R) with titles. Highlight the variances you are comparing. Include text that explains your understanding of the differences of the variances.</p></li>
+<li><p><strong>Distribution</strong>: Via figures and text, explain how one can tell the distribution is approximately normal.</p></li>
 </ul>
 </div>
-<div id="part-2-basic-inferential-data-analysis-instructions" class="section level3">
-<h3>Part 2: Basic Inferential Data Analysis Instructions</h3>
-<p>Now in the second portion of the project, we’re going to analyze the ToothGrowth data in the R datasets package.</p>
+<div id="part-2-basic-inferential-data-analysis-instructions" class="section level4">
+<h4>Part 2: Basic Inferential Data Analysis Instructions</h4>
+<p>In the second portion of the project, analyze the <code>ToothGrowth</code> data in the R datasets package.</p>
 <ol style="list-style-type: decimal">
 <li><p>Load the ToothGrowth data and perform some basic exploratory data analyses</p></li>
 <li><p>Provide a basic summary of the data.</p></li>
 <li><p>Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there’s other approaches worth considering)</p></li>
 <li><p>State your conclusions and the assumptions needed for your conclusions.</p></li>
 </ol>
+</div>
+<div id="repository-contents" class="section level3">
+<h3>Repository Contents</h3>
+<p>This repository contains the following:</p>
+<div id="part-1" class="section level4">
+<h4>Part 1</h4>
+<ul>
+<li><strong>exp-distrib-simulation.Rmd</strong>: exploratory data analysis of the CLT in R Markdown format</li>
+<li><strong>exp-distrib-simulation.html</strong>: exploratory data analysis of the CLT in HTML format created by knitr</li>
+<li><strong>exp-distrib-simulation.pdf</strong>: exploratory data analysis of the CLT in PDF format created by knitr</li>
+<li><strong>/figures</strong>: directory containing figures from <em>exp-distrib-simulation</em> in PNG format</li>
+</ul>
+</div>
+<div id="part-2" class="section level4">
+<h4>Part 2</h4>
+<ul>
+<li><strong>tooth-growth-analysis.Rmd</strong>: analysis of ToothGrowth dataset in R Markdown format</li>
+<li><strong>tooth-growth-analysis.html</strong>: analysis of ToothGrowth dataset in HTML format created by knitr</li>
+<li><strong>/figures</strong>: directory containing figures from tooth_growth in png format</li>
+</ul>
+</div>
 </div>
 <div id="review-criteria" class="section level3">
 <h3>Review Criteria</h3>
