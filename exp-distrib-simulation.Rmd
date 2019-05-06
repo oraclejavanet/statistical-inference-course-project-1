@@ -41,7 +41,52 @@ simulation of averages of 40 exponentials for one thousand simulations.
 
 ## Simulations
 
+```{r exp-simulation, echo = TRUE}
+# load libraries
+if (!require(ggplot2)) {
+    install.packages("ggplot2", repos = "http://cran.us.r-project.org")
+    library(ggplot2)
+}
 
+# set seed for reproducability
+set.seed(006867)
+
+# set sampling values:
+lambda <- 0.2             # rate parameter
+n <- 40                   # number of samples (exponentials) in each simulation
+numSimulations <- 1000    # number of simulations
+
+# simulate the population by appending each sample mean to a vector
+#simMeans = NULL
+#for (i in 1 : numSimulations) {
+#    simSample <- rexp(n, lambda)
+#    simMeans <- c(simMeans, mean(simSample))
+#}
+#sampleMean <- mean(simMeans)
+#theoMean <- 1/lambda
+
+simMeans <- data.frame(x=sapply(1 : 1000, function(x) {mean(rexp(n, lambda))}))
+head(simMeans)
+
+#print(sampleMean)
+#print(theoMean)
+
+# plot the means distribution
+
+#hist.pop <- ggplot(simMeans, aes(x = x)) + 
+#  geom_histogram(aes(y=..count.., fill=..count..)) +
+#  labs(title="Histogram for Averages of 40 Exponentials over 1000 Simulations", y="Frequency", x="Mean")
+#hist.pop
+
+expSimulationMeansChart <- ggplot(simMeans, aes(x = x)) +
+                                  geom_histogram(binwidth = 0.25, aes(y = ..count.., fill = ..count..)) +
+                                  xlab("Mean") +
+                                  ylab("Frequency") +
+                                  theme(plot.title = element_text(size = 14, hjust = 0.5)) +
+                                  ggtitle("Exponential Simulation Means")
+print(expSimulationMeansChart)
+
+```
 
 ## Sample Mean versus Theoretical Mean
 
