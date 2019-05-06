@@ -9,7 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Jeffrey Hunter" />
+<meta name="author" content="Jeffrey M. Hunter" />
 
 
 <title>Statistical Inference Course Project (Part 1)</title>
@@ -291,7 +291,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Statistical Inference Course Project (Part 1)</h1>
-<h4 class="author">Jeffrey Hunter</h4>
+<h4 class="author">Jeffrey M. Hunter</h4>
 <h4 class="date">05 May, 2019</h4>
 
 </div>
@@ -299,6 +299,9 @@ div.tocify {
 
 <div id="overview" class="section level2">
 <h2>Overview</h2>
+<p>The Central Limit Theorem states that if you have a population with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span> and take sufficiently large random samples from the population (generally sample sizes over 30), then the distribution of the sample means will be approximately normally distributed about the population mean <span class="math inline">\(\mu\)</span> - no matter the shape of the population distribution.</p>
+<p>In this project, investigate the exponential distribution in R and compare it with the Central Limit Theorem (CLM). The exponential distribution will be simulated in R with <code>rexp(n, lambda)</code> where lambda is the rate parameter.</p>
+<p>The mean of the exponential distribution is <code>1/lambda</code> and the standard deviation is also <code>1/lambda</code>. Lambda will be set to <code>lambda = 0.2</code> for all of the simulations. An investigation will be performed on the distribution via simulation of averages of 40 exponentials for one thousand simulations.</p>
 </div>
 <div id="simulations" class="section level2">
 <h2>Simulations</h2>

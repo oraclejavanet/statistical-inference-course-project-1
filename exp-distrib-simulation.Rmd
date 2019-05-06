@@ -24,7 +24,20 @@ knitr::opts_chunk$set(echo = TRUE, fig.path='figures/')
 
 ## Overview
 
+The Central Limit Theorem states that if you have a population with mean $\mu$
+and standard deviation $\sigma$ and take sufficiently large random samples from
+the population (generally sample sizes over 30), then the distribution of the
+sample means will be approximately normally distributed about the population
+mean $\mu$ - no matter the shape of the population distribution.
 
+In this project, investigate the exponential distribution in R and compare it
+with the Central Limit Theorem (CLM). The exponential distribution will be
+simulated in R with `rexp(n, lambda)` where lambda is the rate parameter.
+
+The mean of the exponential distribution is `1/lambda` and the standard
+deviation is also `1/lambda`. Lambda will be set to `lambda = 0.2` for all of
+the simulations. An investigation will be performed on the distribution via
+simulation of averages of 40 exponentials for one thousand simulations.
 
 ## Simulations
 
