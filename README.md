@@ -2,18 +2,18 @@
 
 **Jeffrey M. Hunter**
 
-May 6, 2019
+May 10, 2019
 
 The project consists of two parts.
 
 #### Part 1: Simulation Exercise Instructions
 
 Investigate an exponential distribution in R and compare it with the Central
-Limit Theorem (CLM). The exponential distribution will be simulated in R with
+Limit Theorem (CLT). The exponential distribution will be simulated in R with
 `rexp(n, lambda)` where lambda is the rate parameter.
 
-The mean of the exponential distribution is `1/lambda` and the standard
-deviation is also `1/lambda`. Lambda will be set to `lambda = 0.2` for all of
+The mean of the exponential distribution is $\frac{1}{\lambda}$ and the standard
+deviation is also $\frac{1}{\lambda}$. Lambda will be set to $\lambda = 0.2$ for all of
 the simulations. An investigation will be performed on the distribution of
 averages of 40 exponentials for one thousand simulations.
 
@@ -82,28 +82,11 @@ This repository contains the following:
 * **exp-distrib-simulation.Rmd**: exploratory data analysis of the CLT in R Markdown format
 * **exp-distrib-simulation.html**: exploratory data analysis of the CLT in HTML format created by knitr
 * **exp-distrib-simulation.pdf**: exploratory data analysis of the CLT in PDF format created by knitr
-* **/figures**: directory containing figures from *exp-distrib-simulation* in PNG format
+* **figures**: directory containing figures from *exp-distrib-simulation* in PNG format
 
 #### Part 2
 
 * **tooth-growth-analysis.Rmd**: analysis of ToothGrowth dataset in R Markdown format
 * **tooth-growth-analysis.html**: analysis of ToothGrowth dataset in HTML format created by knitr
-* **/figures**: directory containing figures from tooth_growth in png format
-
-### Review Criteria
-
-* Did you show where the distribution is centered at and compare it to the
-  theoretical center of the distribution?
-
-* Did you show how variable it is and compare it to the theoretical variance of
-  the distribution?
-
-* Did you perform an exploratory data analysis of at least a single plot or
-  table highlighting basic features of the data?
-
-* Did the student perform some relevant confidence intervals and/or tests?
-
-* Were the results of the tests and/or intervals interpreted in the context of
-  the problem correctly?
-
-* Did the student describe the assumptions needed for their conclusions?
+* **tooth-growth-analysis.pdf**: analysis of ToothGrowth dataset in PDF format created by knitr
+* **figures**: directory containing figures from *tooth-growth-analysis* in PNG format
