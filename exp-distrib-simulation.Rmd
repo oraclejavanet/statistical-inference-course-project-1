@@ -69,7 +69,7 @@ expSimulationMeansChart <- ggplot(simMeans, aes(x = expMean, y = ..count..)) +
     xlab("Mean") +
     ylab("Frequency") +
     theme(plot.title = element_text(size = 14, hjust = 0.5)) +
-    ggtitle("Histogram of Exponential Simulation Means")
+    ggtitle("Distribution of Exponential Simulation Means")
 print(expSimulationMeansChart)
 ```
 
@@ -86,7 +86,7 @@ $\frac{1}{\lambda}$.
 Calculate the sample mean and theoretical mean across all 1000 simulations of
 40 samples from an exponential distribution where $\lambda = 0.2$. 
 
-```{r sample-vs-theoretical-mean, echo = TRUE}
+```{r sample-mean-vs-theoretical-mean, echo = TRUE}
 # calculate sample mean and theoretical mean
 sampleMean <- mean(simMeans$expMean)
 theoMean <- 1/lambda
@@ -97,12 +97,13 @@ print(compMeans)
 # plot the distribution (sample mean versus theoretical mean)
 expSimulationMeansChart <- ggplot(simMeans, aes(x = expMean, y = ..count..)) +
     geom_histogram(binwidth = 0.15, color = "white", fill = rgb(0.2,0.7,0.1,0.4))  +
-    geom_vline(xintercept = sampleMean, color = "blue", size = 0.25) +
-    geom_vline(xintercept = theoMean, color = "red", size = 0.25) +
+    geom_vline(aes(xintercept = sampleMean, color = "sample"), size = 0.50) +
+    geom_vline(aes(xintercept = theoMean, color = "theoretical"), size = 0.50) +
     xlab("Mean") +
     ylab("Frequency") +
     theme(plot.title = element_text(size = 14, hjust = 0.5)) +
-    ggtitle("Histogram of Exponential Simulation Means")
+    scale_color_manual(name = "Means", values = c(sample = "blue", theoretical = "red")) +
+    ggtitle("Distribution of Exponential Simulation Means")
 print(expSimulationMeansChart)
 ```
 
@@ -113,6 +114,22 @@ exponential distribution (red vertical line).
 
 ## Sample Variance versus Theoretical Variance
 
+In the same manner used to compare the
+[Sample Mean and Theoretical Mean](#sample-mean-versus-theoretical-mean), the
+Sample Variance will be compared to the Theoretical Variance.
 
+The theoretical variance is $\frac{(\frac{1}{\lambda})^2}{n}$.
+
+```{r sample-variance-vs-theoretical-variance, echo = TRUE}
+# calculate sample variance and theoretical variance
+sampleVariance <- var(simMeans$expMean)
+theoVariance <- ((1/lambda)^2)/n
+compVariance <- data.frame(sampleVariance, theoVariance)
+names(compVariance) <- c("Sample Variance", "Theoretical Variance")
+print(compVariance)
+```
+
+The sample variance came out to be `r sampleVariance` which is very close
+to the theoretical variance `r theoVariance`.
 
 ## Distribution
