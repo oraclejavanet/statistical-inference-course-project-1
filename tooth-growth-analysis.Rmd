@@ -24,11 +24,58 @@ knitr::opts_chunk$set(echo = TRUE, fig.path='figures/')
 
 ## Overview
 
+In this second part of a two-part project assignment, we are being asked to
+investigate the effect of vitamin C on tooth growth in guinea pigs.
 
+This analysis will compare the effects of different doses of vitamin C using
+two delivery methods to study the tooth growth in guinea pigs. The sample
+will consist of 60 guinea pigs. Each guinea pig will receive one of three dose
+levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods,
+orange juice or ascorbic acid.
+
+The study will be performed using the ToothGrowth dataset which is included in
+the R `datasets` package. The dataset is a data frame that contains 60
+observations and 3 variables:
+
+* len - A numeric vector indicating the measurement of tooth length after
+        Vitamin C delivery
+* supp - A factor vector describing the delivery method used. Either Orange
+         Juice (OJ) or Ascorbic Acid (VC)
+* dose - A numeric vector indicating the dosage level in milligrams
+         (0.5, 1, or 2mg)
+
+Further information on the ToothGrowth dataset can be found in the R
+documentation (?ToothGrowth).
+
+## Load Packages
+
+Start by loading packages used in this analysis.
+
+```{r load-packages, echo = TRUE}
+if (!require(ggplot2)) {
+    install.packages("ggplot2", repos = "http://cran.us.r-project.org")
+    library(ggplot2)
+}
+```
+
+
+
+## Exploratory Data Analysis
+
+
+
+
+
+
+```{r exploratory-data-analysis, echo = TRUE}
+# load ToothGrowth dataset
+library(datasets)
+data(ToothGrowth)
+```
 
 ## Basic Summary
 
-
+Load the ToothGrowth data and perform some basic exploratory data analyses Provide a basic summary of the data.
 
 ## Confidence Intervals
 
@@ -38,3 +85,14 @@ knitr::opts_chunk$set(echo = TRUE, fig.path='figures/')
 
 ## Conclusion
 
+Following results can be concluded from the above hypothesis testing
+
+* Supplement type has no effect on tooth growth.
+
+* Increasing the dose level leads to increased tooth growth.
+
+===============
+
+Both the confidence intervals and hypothesis tests indicate that at lower dosages, specifically 0.5 mg and 1 mg, the Orange Juice delivery method results in longer teeth than the Ascorbic Acid. However, at higher dosages, specifically 2 mg, there appears to be little difference and certainly not enough to reject the null hypothesis that they have the same effect.
+
+However, the plot of means and confidence intervals does hint at a flattening out of effectiveness when using the Orange Juice method at a faster rate than when using the Ascorbic Acid method. This might warrant further exploration to see if Ascorbic Acid results in greater tooth length than Orange Juice and higher dosages.
