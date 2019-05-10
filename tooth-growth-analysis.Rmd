@@ -18,10 +18,6 @@ output:
     dev: pdf
 ---
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.path='figures/')
-```
-
 ## Overview
 
 In this second part of a two-part project assignment, we are being asked to
@@ -45,30 +41,30 @@ observations and 3 variables:
          (0.5, 1, or 2mg)
 
 Further information on the ToothGrowth dataset can be found in the R
-documentation (?ToothGrowth).
+documentation using `?ToothGrowth`.
 
-## Load Packages
+## Environment Setup
 
-Start by loading packages used in this analysis.
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.path='figures/')
+```
+
+Load packages used in this analysis.
 
 ```{r load-packages, echo = TRUE}
 if (!require(ggplot2)) {
     install.packages("ggplot2", repos = "http://cran.us.r-project.org")
     library(ggplot2)
 }
+if (!require(dplyr, warn.conflicts = FALSE)) {
+    install.packages("dplyr", repos = "http://cran.us.r-project.org")
+    library(dplyr, warn.conflicts = FALSE)
+}
 ```
 
+Load ToothGrowth dataset.
 
-
-## Exploratory Data Analysis
-
-
-
-
-
-
-```{r exploratory-data-analysis, echo = TRUE}
-# load ToothGrowth dataset
+```{r load-data, echo = TRUE}
 library(datasets)
 data(ToothGrowth)
 ```

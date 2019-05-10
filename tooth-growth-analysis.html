@@ -307,21 +307,23 @@ div.tocify {
 <li>supp - A factor vector describing the delivery method used. Either Orange Juice (OJ) or Ascorbic Acid (VC)</li>
 <li>dose - A numeric vector indicating the dosage level in milligrams (0.5, 1, or 2mg)</li>
 </ul>
-<p>Further information on the ToothGrowth dataset can be found in the R documentation (?ToothGrowth).</p>
+<p>Further information on the ToothGrowth dataset can be found in the R documentation using <code>?ToothGrowth</code>.</p>
 </div>
-<div id="load-packages" class="section level2">
-<h2>Load Packages</h2>
-<p>Start by loading packages used in this analysis.</p>
+<div id="environment-setup" class="section level2">
+<h2>Environment Setup</h2>
+<p>Load packages used in this analysis.</p>
 <pre class="r"><code>if (!require(ggplot2)) {
     install.packages(&quot;ggplot2&quot;, repos = &quot;http://cran.us.r-project.org&quot;)
     library(ggplot2)
 }</code></pre>
 <pre><code>## Loading required package: ggplot2</code></pre>
-</div>
-<div id="exploratory-data-analysis" class="section level2">
-<h2>Exploratory Data Analysis</h2>
-<pre class="r"><code># load ToothGrowth dataset
-library(datasets)
+<pre class="r"><code>if (!require(dplyr, warn.conflicts = FALSE)) {
+    install.packages(&quot;dplyr&quot;, repos = &quot;http://cran.us.r-project.org&quot;)
+    library(dplyr, warn.conflicts = FALSE)
+}</code></pre>
+<pre><code>## Loading required package: dplyr</code></pre>
+<p>Load ToothGrowth dataset.</p>
+<pre class="r"><code>library(datasets)
 data(ToothGrowth)</code></pre>
 </div>
 <div id="basic-summary" class="section level2">
