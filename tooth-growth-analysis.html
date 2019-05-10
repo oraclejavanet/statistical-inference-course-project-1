@@ -292,16 +292,41 @@ div.tocify {
 
 <h1 class="title toc-ignore">Statistical Inference Course Project (Part 2)</h1>
 <h4 class="author">Jeffrey M. Hunter</h4>
-<h4 class="date">05 May, 2019</h4>
+<h4 class="date">10 May, 2019</h4>
 
 </div>
 
 
 <div id="overview" class="section level2">
 <h2>Overview</h2>
+<p>In this second part of a two-part project assignment, we are being asked to investigate the effect of vitamin C on tooth growth in guinea pigs.</p>
+<p>This analysis will compare the effects of different doses of vitamin C using two delivery methods to study the tooth growth in guinea pigs. The sample will consist of 60 guinea pigs. Each guinea pig will receive one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, orange juice or ascorbic acid.</p>
+<p>The study will be performed using the ToothGrowth dataset which is included in the R <code>datasets</code> package. The dataset is a data frame that contains 60 observations and 3 variables:</p>
+<ul>
+<li>len - A numeric vector indicating the measurement of tooth length after Vitamin C delivery</li>
+<li>supp - A factor vector describing the delivery method used. Either Orange Juice (OJ) or Ascorbic Acid (VC)</li>
+<li>dose - A numeric vector indicating the dosage level in milligrams (0.5, 1, or 2mg)</li>
+</ul>
+<p>Further information on the ToothGrowth dataset can be found in the R documentation (?ToothGrowth).</p>
+</div>
+<div id="load-packages" class="section level2">
+<h2>Load Packages</h2>
+<p>Start by loading packages used in this analysis.</p>
+<pre class="r"><code>if (!require(ggplot2)) {
+    install.packages(&quot;ggplot2&quot;, repos = &quot;http://cran.us.r-project.org&quot;)
+    library(ggplot2)
+}</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+</div>
+<div id="exploratory-data-analysis" class="section level2">
+<h2>Exploratory Data Analysis</h2>
+<pre class="r"><code># load ToothGrowth dataset
+library(datasets)
+data(ToothGrowth)</code></pre>
 </div>
 <div id="basic-summary" class="section level2">
 <h2>Basic Summary</h2>
+<p>Load the ToothGrowth data and perform some basic exploratory data analyses Provide a basic summary of the data.</p>
 </div>
 <div id="confidence-intervals" class="section level2">
 <h2>Confidence Intervals</h2>
@@ -311,6 +336,14 @@ div.tocify {
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
+<p>Following results can be concluded from the above hypothesis testing</p>
+<ul>
+<li><p>Supplement type has no effect on tooth growth.</p></li>
+<li><p>Increasing the dose level leads to increased tooth growth.</p></li>
+</ul>
+<p>===============</p>
+<p>Both the confidence intervals and hypothesis tests indicate that at lower dosages, specifically 0.5 mg and 1 mg, the Orange Juice delivery method results in longer teeth than the Ascorbic Acid. However, at higher dosages, specifically 2 mg, there appears to be little difference and certainly not enough to reject the null hypothesis that they have the same effect.</p>
+<p>However, the plot of means and confidence intervals does hint at a flattening out of effectiveness when using the Orange Juice method at a faster rate than when using the Ascorbic Acid method. This might warrant further exploration to see if Ascorbic Acid results in greater tooth length than Orange Juice and higher dosages.</p>
 </div>
 
 
