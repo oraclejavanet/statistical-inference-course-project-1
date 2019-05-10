@@ -26,9 +26,9 @@ knitr::opts_chunk$set(echo = TRUE, fig.path='figures/')
 
 The Central Limit Theorem states that if you have a population with mean $\mu$
 and standard deviation $\sigma$ and take sufficiently large random samples from
-the population (generally sample sizes over 30), then the distribution of the
-sample means will be approximately normally distributed about the population
-mean $\mu$ - no matter the shape of the population distribution.
+the population (generally sample sizes greater than 30), then the distribution
+of the sample means will be approximately normally distributed about the
+population mean $\mu$ - no matter the shape of the population distribution.
 
 This project explores the Central Limit Theorem using the exponential
 distribution in R. The theoretical normal distribution will be compared to the
@@ -53,7 +53,7 @@ if (!require(ggplot2)) {
 }
 
 # set seed for reproducability
-set.seed(006766)
+set.seed(062000)
 
 # set sampling values:
 lambda <- 0.2             # rate parameter
@@ -61,46 +61,57 @@ n <- 40                   # number of samples (exponentials) in each simulation
 numSimulations <- 1000    # number of simulations
 
 # simulate the population
-simMeans <- data.frame(expMeans = sapply(1 : numSimulations, function(x) {mean(rexp(n, lambda))}))
+simMeans <- data.frame(expMean = sapply(1 : numSimulations, function(x) {mean(rexp(n, lambda))}))
 
 # plot the distribution
-expSimulationMeansChart <- ggplot(simMeans, aes(x = expMeans)) +
-                                  geom_histogram(binwidth = 0.15, color = "white", fill = rgb(0.2,0.7,0.1,0.4))  +
-                                  xlab("Mean") +
-                                  ylab("Frequency") +
-                                  theme(plot.title = element_text(size = 14, hjust = 0.5)) +
-                                  ggtitle("Histogram of Exponential Simulation Means")
+expSimulationMeansChart <- ggplot(simMeans, aes(x = expMean, y = ..count..)) +
+    geom_histogram(binwidth = 0.15, color = "white", fill = rgb(0.2,0.7,0.1,0.4))  +
+    xlab("Mean") +
+    ylab("Frequency") +
+    theme(plot.title = element_text(size = 14, hjust = 0.5)) +
+    ggtitle("Histogram of Exponential Simulation Means")
 print(expSimulationMeansChart)
 ```
 
-## Sample Mean vs Theoretical Mean
+## Sample Mean versus Theoretical Mean
 
-*Pending*
+According to the Central Limit Theorem, the distribution of the sample means
+will be approximately normally distributed with a mean equal to the population
+mean $\mu$ of the underlying distribution. Because the underlying distribution
+in this simulation is exponential, the theoretical mean of the exponential
+distribution will be compared to the corresponding sample mean of the
+simulation. For an exponential distribution, the theoretical mean is equal to
+$\frac{1}{\lambda}$. 
 
-The mean of the exponential distribution is `1/lambda` and the standard
-deviation is also `1/lambda`.
+Calculate the sample mean and theoretical mean across all 1000 simulations of
+40 samples from an exponential distribution where $\lambda = 0.2$. 
 
-
-
-Perform 1000 simulations on 40 samples which are exponentially distributed
-with `lambda = 0.2`, then take the mean of each simulation.
-
-In this project, investigate the exponential distribution in R and compare it
-with the Central Limit Theorem (CLM). The exponential distribution will be
-simulated in R with `rexp(n, lambda)` where lambda is the rate parameter.
-
-Lambda will be set to `lambda = 0.2` for all of
-the simulations. An investigation will be performed on the distribution via
-simulation of averages of 40 exponentials for one thousand simulations.
-
-
-
-sampleMean <- mean(simMeans$mValue)
+```{r sample-vs-theoretical-mean, echo = TRUE}
+# calculate sample mean and theoretical mean
+sampleMean <- mean(simMeans$expMean)
 theoMean <- 1/lambda
-print(sampleMean)
-print(theoMean)
+compMeans <- data.frame(sampleMean, theoMean)
+names(compMeans) <- c("Sample Mean", "Theoretical Mean")
+print(compMeans)
 
-## Sample Variance vs Theoretical Variance
+# plot the distribution (sample mean versus theoretical mean)
+expSimulationMeansChart <- ggplot(simMeans, aes(x = expMean, y = ..count..)) +
+    geom_histogram(binwidth = 0.15, color = "white", fill = rgb(0.2,0.7,0.1,0.4))  +
+    geom_vline(xintercept = sampleMean, color = "blue", size = 0.25) +
+    geom_vline(xintercept = theoMean, color = "red", size = 0.25) +
+    xlab("Mean") +
+    ylab("Frequency") +
+    theme(plot.title = element_text(size = 14, hjust = 0.5)) +
+    ggtitle("Histogram of Exponential Simulation Means")
+print(expSimulationMeansChart)
+```
+
+The sample mean came out to be `r sampleMean` while the theoretical mean is
+`r theoMean`. As shown in the above chart, the mean of the sample means of
+exponentials (blue vertical line) is very close to the theoretical mean of an
+exponential distribution (red vertical line).
+
+## Sample Variance versus Theoretical Variance
 
 
 
