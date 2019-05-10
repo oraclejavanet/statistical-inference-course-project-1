@@ -41,9 +41,7 @@ The 40 samples will be used to calculate the arithmetic mean and variance and
 then compared to the theoretical estimates.
 
 To make the data reproducible, a seed will be set. Also, set the control 
-parameters $\lambda = 0.2$ (the rate) and $n = 40$ (number of samples). A histogram
-will be provided to show the averages of the 40 exponentials over 1000
-simulations.
+parameters $\lambda = 0.2$ (the rate) and $n = 40$ (number of samples).
 
 ```{r exp-simulation, echo = TRUE}
 # load libraries
@@ -62,15 +60,6 @@ numSimulations <- 1000    # number of simulations
 
 # simulate the population
 simMeans <- data.frame(expMean = sapply(1 : numSimulations, function(x) {mean(rexp(n, lambda))}))
-
-# plot the distribution
-expSimulationMeansChart <- ggplot(simMeans, aes(x = expMean, y = ..count..)) +
-    geom_histogram(binwidth = 0.15, color = "white", fill = rgb(0.2,0.7,0.1,0.4))  +
-    xlab("Mean") +
-    ylab("Frequency") +
-    theme(plot.title = element_text(size = 14, hjust = 0.5)) +
-    ggtitle("Distribution of Exponential Simulation Means")
-print(expSimulationMeansChart)
 ```
 
 ## Sample Mean versus Theoretical Mean
@@ -98,13 +87,16 @@ print(compMeans)
 ```
 
 As part of the data analysis, also perform a one sample t-test to check the 95%
-confidence interval for sample mean.
+confidence interval for the sample mean.
 
 ```{r sample-mean-t-test, echo = TRUE}
 t.test(simMeans$expMean, conf.level = 0.95)
 ```
 
 ### Plot Distribution
+
+Display a histogram to show the averages of the 40 exponentials over 1000
+simulations. Include the sample mean and theoretical mean for comparison.
 
 ```{r sample-mean-vs-theoretical-mean-plot, echo = TRUE}
 # plot the distribution (sample mean versus theoretical mean)
@@ -128,7 +120,7 @@ exponentials (blue vertical line) is very close to the theoretical mean of an
 exponential distribution (red vertical line). We can also see that with a 95%
 confidence interval, the sampled mean is between
 `r t.test(simMeans$expMean, conf.level=0.95)$conf.int[1]` and
-`r t.test(simMeans$expMean, conf.level=0.95)$conf.int[2]` which match closely.
+`r t.test(simMeans$expMean, conf.level=0.95)$conf.int[2]` which closely match.
 
 ## Sample Variance versus Theoretical Variance
 
@@ -180,5 +172,5 @@ As shown in the above plot, the distribution of means of the sampled exponential
 distribution appear to follow a normal distribution.
 
 The density of the sampled data is shown by the light green bars. The dotted red
-line in the plot above represents a normal distribution which is very close to
+line represents a normal distribution which is very close to
 the sample distribution colored in blue.
