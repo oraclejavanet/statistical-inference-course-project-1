@@ -12,8 +12,8 @@ Investigate an exponential distribution in R and compare it with the Central
 Limit Theorem (CLT). The exponential distribution will be simulated in R with
 `rexp(n, lambda)` where lambda is the rate parameter.
 
-The mean of the exponential distribution is $\frac{1}{\lambda}$ and the standard
-deviation is also $\frac{1}{\lambda}$. Lambda will be set to $\lambda = 0.2$ for all of
+The mean of the exponential distribution is `1/lambda` and the standard
+deviation is also `1/lambda`. Lambda will be set to `lambda = 0.2` for all of
 the simulations. An investigation will be performed on the distribution of
 averages of 40 exponentials for one thousand simulations.
 
