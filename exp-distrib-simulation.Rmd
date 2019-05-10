@@ -83,6 +83,8 @@ distribution will be compared to the corresponding sample mean of the
 simulation. For an exponential distribution, the theoretical mean is equal to
 $\frac{1}{\lambda}$. 
 
+### Analysis
+
 Calculate the sample mean and theoretical mean across all 1000 simulations of
 40 samples from an exponential distribution where $\lambda = 0.2$. 
 
@@ -93,7 +95,18 @@ theoMean <- 1/lambda
 compMeans <- data.frame(sampleMean, theoMean)
 names(compMeans) <- c("Sample Mean", "Theoretical Mean")
 print(compMeans)
+```
 
+As part of the data analysis, also perform a one sample t-test to check the 95%
+confidence interval for sample mean.
+
+```{r sample-mean-t-test, echo = TRUE}
+t.test(simMeans$expMean, conf.level = 0.95)
+```
+
+### Plot Distribution
+
+```{r sample-mean-vs-theoretical-mean-plot, echo = TRUE}
 # plot the distribution (sample mean versus theoretical mean)
 expSimulationMeansChart <- ggplot(simMeans, aes(x = expMean, y = ..count..)) +
     geom_histogram(binwidth = 0.15, color = "white", fill = rgb(0.2,0.7,0.1,0.4))  +
@@ -107,16 +120,23 @@ expSimulationMeansChart <- ggplot(simMeans, aes(x = expMean, y = ..count..)) +
 print(expSimulationMeansChart)
 ```
 
+### Findings
+
 The sample mean came out to be `r sampleMean` while the theoretical mean is
 `r theoMean`. As shown in the above chart, the mean of the sample means of
 exponentials (blue vertical line) is very close to the theoretical mean of an
-exponential distribution (red vertical line).
+exponential distribution (red vertical line). We can also see that with a 95%
+confidence interval, the sampled mean is between
+`r t.test(simMeans$expMean, conf.level=0.95)$conf.int[1]` and
+`r t.test(simMeans$expMean, conf.level=0.95)$conf.int[2]` which match closely.
 
 ## Sample Variance versus Theoretical Variance
 
 In the same manner used to compare the
 [Sample Mean and Theoretical Mean](#sample-mean-versus-theoretical-mean), the
 Sample Variance will be compared to the Theoretical Variance.
+
+### Analysis
 
 The theoretical variance is $\frac{(\frac{1}{\lambda})^2}{n}$.
 
@@ -129,7 +149,36 @@ names(compVariance) <- c("Sample Variance", "Theoretical Variance")
 print(compVariance)
 ```
 
+### Findings
+
 The sample variance came out to be `r sampleVariance` which is very close
 to the theoretical variance `r theoVariance`.
 
 ## Distribution
+
+Determine whether the exponential distribution is approximately normally
+distributed about the population mean. According to the Central Limit Theorem,
+the means of the sample simulations should follow a normal distribution.
+
+```{r distribution-of-exponential-means-plot, echo = TRUE}
+# plot the distribution
+expSimulationMeansChart <- ggplot(simMeans, aes(x = expMean)) +
+    geom_histogram(aes(y = ..density..), binwidth = 0.15, color = "white", fill = rgb(0.2,0.7,0.1,0.4))  +
+    geom_vline(aes(xintercept = sampleMean, color = "sample"), size = 0.50) +
+    geom_vline(aes(xintercept = theoMean, color = "theoretical"), size = 0.50) +
+    xlab("Mean") +
+    ylab("Density") +
+    theme(plot.title = element_text(size = 14, hjust = 0.5)) +
+    scale_color_manual(name = "Means", values = c(sample = "blue", theoretical = "red")) +
+    stat_function(fun = dnorm, args = list(mean = sampleMean, sd = sqrt(sampleVariance)), color = "blue", size = 1.0) +
+    stat_function(fun = dnorm, args = list(mean = theoMean, sd = sqrt(theoVariance)), color = "red", size = 1.0, linetype = "dashed") +
+    ggtitle("Distribution of Exponential Simulation Means")
+print(expSimulationMeansChart)
+```
+
+As shown in the above plot, the distribution of means of the sampled exponential
+distribution appear to follow a normal distribution.
+
+The density of the sampled data is shown by the light green bars. The dotted red
+line in the plot above represents a normal distribution which is very close to
+the sample distribution colored in blue.
