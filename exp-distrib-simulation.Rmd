@@ -82,6 +82,7 @@ deviation is also `1/lambda`.
 
 
 
+
 Perform 1000 simulations on 40 samples which are exponentially distributed
 with `lambda = 0.2`, then take the mean of each simulation.
 
