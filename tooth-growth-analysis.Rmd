@@ -152,8 +152,8 @@ print(gLenSuppDose)
 Looking at the above chart which shows tooth growth as a function of delivery
 method and dosage level, it appears that Orange Juice is more effective than
 Ascorbic Acid as the delivery method when the dosage level is 0.5 to 1.0 mg/day.
-When the dosage level is 2.0 mg/day, both delivery methods are equally as
-effective.
+The higher dosage level of 2.0 mg/day is more effective than the lower
+dosages, but both delivery methods are equally as effective.
 
 ## Confidence Intervals
 
