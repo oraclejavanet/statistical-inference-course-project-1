@@ -35,8 +35,8 @@ observations and 3 variables:
 
 * len - A numeric vector indicating the measurement of tooth length after
         Vitamin C delivery
-* supp - A factor vector describing the delivery method used. Either Orange
-         Juice (OJ) or Ascorbic Acid (VC)
+* supp - A factor vector describing the delivery method (supplement type) used.
+         Either Orange Juice (OJ) or Ascorbic Acid (VC)
 * dose - A numeric vector indicating the dosage level in milligrams
          (0.5, 1, or 2mg)
 
@@ -76,23 +76,88 @@ After loading the ToothGrowth dataset, provide a basic summary of the data.
 ```{r basic-data-summary, echo = TRUE}
 str(ToothGrowth)
 summary(ToothGrowth)
-head(ToothGrowth)
 
-# unique observations grouped by delivery method and dosage level
-ToothGrowth %>% select(supp, dose) %>% group_by(supp, dose) %>% summarize(count=n())
+# tabulate supplement type and dosage level values
+table(ToothGrowth$dose, ToothGrowth$supp)
 
-# summary of tooth length data grouped by delivery method and dosage level
+# summary of tooth length data grouped by supplement type and dosage level
 by(data = ToothGrowth$len, INDICES = list(ToothGrowth$supp, ToothGrowth$dose), summary)
 ```
 
 ## Exploratory Data Analysis
 
-Perform some basic exploratory data analyses of the data.
+Perform some basic exploratory data analyses of the data. The analyses will
+explore the following relations:
 
-```{r exploratory-data-analysis, echo = TRUE}
+1. Tooth Length (len) as a function of Supplement Type (supp)
+1. Tooth Length (len) as a function of Dosage Level (dose)
+1. Tooth Length (len) as a function of Supplement Type (supp) and Dosage Level (dose)
+
+### Tooth Length to Supplement Type
+
+```{r tooth-length-relative-to-supplement-type, echo = TRUE}
+tg <- ToothGrowth
+levels(tg$supp) <- c("Orange Juice", "Ascorbic Acid")
+gLenSupp <- ggplot(data = tg, aes(x = supp, y = len)) + 
+    geom_boxplot(aes(fill = supp)) +
+    xlab("Supplement Type") +
+    ylab("Tooth Length") +
+    theme(plot.title = element_text(size = 14, hjust = 0.5)) +
+    ggtitle("Tooth Length as a Function of Supplement Type")
+print(gLenSupp)
 ```
 
+**Observation**
+
+The above chart shows that using Orange Juice (OC) as the delivery method,
+independent of dosage level, had a more favorable effect on tooth growth than
+Ascorbic Acid (VC) .
+
+### Tooth Length to Dosage Level
+
+```{r tooth-length-relative-to-dosage-level, echo = TRUE}
+gLenDose <- ggplot(data = ToothGrowth, aes(x = factor(dose), y = len)) + 
+    geom_boxplot(aes(fill = factor(dose))) +
+    xlab("Dosage Level (mg/day)") +
+    ylab("Tooth Length") +
+    guides(fill=guide_legend(title="dose")) +
+    theme(plot.title = element_text(size = 14, hjust = 0.5)) +
+    ggtitle("Tooth Length as a Function of Dosage Level")
+print(gLenDose)
+```
+
+**Observation**
+
+The above chart shows a positive relationship that higher dosage levels of
+vitamin C, independent of delivery method, had a more favorable effect on tooth
+growth than lower dosages of vitamin C. The 2.0 mg/day dosage level had the
+best effect on tooth growth followed by 1.0 mg/day and then 0.5 mg/day.
+
+### Tooth Length to Supplement Type and Dosage Level
+
+```{r tooth-length-relative-to-supplement-type-and-dosage-level, echo = TRUE}
+gLenSuppDose <- ggplot(data = ToothGrowth, aes(x = supp, y = len)) + 
+    geom_boxplot(aes(fill = supp)) +
+    facet_wrap(~ dose) +
+    xlab("Supplement Type") +
+    ylab("Tooth Length") +
+    guides(fill=guide_legend(title="supp")) +
+    theme(plot.title = element_text(size = 14, hjust = 0.5)) +
+    ggtitle("Tooth Length as a Function of\nSupplement Type and Dosage Level")
+print(gLenSuppDose)
+```
+
+**Observation**
+
+Looking at the above chart which shows tooth growth as a function of delivery
+method and dosage level, it appears that Orange Juice is more effective than
+Ascorbic Acid as the delivery method when the dosage level is 0.5 to 1.0 mg/day.
+When the dosage level is 2.0 mg/day, both delivery methods are equally as
+effective.
+
 ## Confidence Intervals
+
+
 
 
 ## Hypothesis Test
