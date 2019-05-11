@@ -136,13 +136,19 @@ best effect on tooth growth followed by 1.0 mg/day and then 0.5 mg/day.
 ### Tooth Length to Supplement Type and Dosage Level
 
 ```{r tooth-length-relative-to-supplement-type-and-dosage-level, echo = TRUE}
-gLenSuppDose <- ggplot(data = ToothGrowth, aes(x = supp, y = len)) + 
+tg <- ToothGrowth
+levels(tg$supp) <- c("Orange Juice", "Ascorbic Acid")
+gLenSuppDose <- ggplot(data = tg, aes(x = supp, y = len)) + 
     geom_boxplot(aes(fill = supp)) +
     facet_wrap(~ dose) +
     xlab("Supplement Type") +
     ylab("Tooth Length") +
     guides(fill=guide_legend(title="supp")) +
-    theme(plot.title = element_text(size = 14, hjust = 0.5)) +
+    theme(plot.title = element_text(size = 14, hjust = 0.5, vjust = 0.5),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 0.5,
+                                     vjust = 0.5,
+                                     margin = margin(b = 10))) +
     ggtitle("Tooth Length as a Function of\nSupplement Type and Dosage Level")
 print(gLenSuppDose)
 ```
@@ -157,7 +163,7 @@ dosages, but both delivery methods are equally as effective.
 
 ## Confidence Intervals
 
-
+Confidence Interval test that the two supps are equal. Null hypothesis is that there is no difference in length which would imply that the 95% confidence interval should contain 0.
 
 
 ## Hypothesis Test
