@@ -109,9 +109,9 @@ print(gLenSupp)
 
 **Observation**
 
-The above chart shows that using Orange Juice (OC) as the delivery method had
-a more favorable effect on tooth growth than Ascorbic Acid (VC) independent
-of dosage level.
+The above chart shows that using Orange Juice (OC) as the delivery method,
+independent of dosage level, had a more favorable effect on tooth growth than
+Ascorbic Acid (VC) .
 
 ### Tooth Length to Dosage Level
 
@@ -128,9 +128,10 @@ print(gLenDose)
 
 **Observation**
 
-The above chart shows a positive correlation that higher dosage levels of
+The above chart shows a positive relationship that higher dosage levels of
 vitamin C, independent of delivery method, had a more favorable effect on tooth
-growth than lower dosages of vitamin C.
+growth than lower dosages of vitamin C. The 2.0 mg/day dosage level had the
+best effect on tooth growth followed by 1.0 mg/day and then 0.5 mg/day.
 
 ### Tooth Length to Supplement Type and Dosage Level
 
@@ -148,7 +149,11 @@ print(gLenSuppDose)
 
 **Observation**
 
-*Pending*
+Looking at the above chart which shows tooth growth as a function of delivery
+method and dosage level, it appears that Orange Juice is more effective than
+Ascorbic Acid as the delivery method when the dosage level is 0.5 to 1.0 mg/day.
+When the dosage level is 2.0 mg/day, both delivery methods are equally as
+effective.
 
 ## Confidence Intervals
 
