@@ -69,9 +69,28 @@ library(datasets)
 data(ToothGrowth)
 ```
 
-## Basic Summary
+## Basic Data Summary
 
-Load the ToothGrowth data and perform some basic exploratory data analyses Provide a basic summary of the data.
+After loading the ToothGrowth dataset, provide a basic summary of the data.
+
+```{r basic-data-summary, echo = TRUE}
+str(ToothGrowth)
+summary(ToothGrowth)
+head(ToothGrowth)
+
+# unique observations grouped by delivery method and dosage level
+ToothGrowth %>% select(supp, dose) %>% group_by(supp, dose) %>% summarize(count=n())
+
+# summary of tooth length data grouped by delivery method and dosage level
+by(data = ToothGrowth$len, INDICES = list(ToothGrowth$supp, ToothGrowth$dose), summary)
+```
+
+## Exploratory Data Analysis
+
+Perform some basic exploratory data analyses of the data.
+
+```{r exploratory-data-analysis, echo = TRUE}
+```
 
 ## Confidence Intervals
 
@@ -81,14 +100,4 @@ Load the ToothGrowth data and perform some basic exploratory data analyses Provi
 
 ## Conclusion
 
-Following results can be concluded from the above hypothesis testing
 
-* Supplement type has no effect on tooth growth.
-
-* Increasing the dose level leads to increased tooth growth.
-
-===============
-
-Both the confidence intervals and hypothesis tests indicate that at lower dosages, specifically 0.5 mg and 1 mg, the Orange Juice delivery method results in longer teeth than the Ascorbic Acid. However, at higher dosages, specifically 2 mg, there appears to be little difference and certainly not enough to reject the null hypothesis that they have the same effect.
-
-However, the plot of means and confidence intervals does hint at a flattening out of effectiveness when using the Orange Juice method at a faster rate than when using the Ascorbic Acid method. This might warrant further exploration to see if Ascorbic Acid results in greater tooth length than Orange Juice and higher dosages.

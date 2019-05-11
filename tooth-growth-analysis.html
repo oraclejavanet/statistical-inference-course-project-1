@@ -326,9 +326,70 @@ div.tocify {
 <pre class="r"><code>library(datasets)
 data(ToothGrowth)</code></pre>
 </div>
-<div id="basic-summary" class="section level2">
-<h2>Basic Summary</h2>
-<p>Load the ToothGrowth data and perform some basic exploratory data analyses Provide a basic summary of the data.</p>
+<div id="basic-data-summary" class="section level2">
+<h2>Basic Data Summary</h2>
+<p>After loading the ToothGrowth dataset, provide a basic summary of the data.</p>
+<pre class="r"><code>str(ToothGrowth)</code></pre>
+<pre><code>## 'data.frame':    60 obs. of  3 variables:
+##  $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
+##  $ supp: Factor w/ 2 levels &quot;OJ&quot;,&quot;VC&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ dose: num  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...</code></pre>
+<pre class="r"><code>summary(ToothGrowth)</code></pre>
+<pre><code>##       len        supp         dose      
+##  Min.   : 4.20   OJ:30   Min.   :0.500  
+##  1st Qu.:13.07   VC:30   1st Qu.:0.500  
+##  Median :19.25           Median :1.000  
+##  Mean   :18.81           Mean   :1.167  
+##  3rd Qu.:25.27           3rd Qu.:2.000  
+##  Max.   :33.90           Max.   :2.000</code></pre>
+<pre class="r"><code>head(ToothGrowth)</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["len"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["supp"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["dose"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"4.2","2":"VC","3":"0.5","_rn_":"1"},{"1":"11.5","2":"VC","3":"0.5","_rn_":"2"},{"1":"7.3","2":"VC","3":"0.5","_rn_":"3"},{"1":"5.8","2":"VC","3":"0.5","_rn_":"4"},{"1":"6.4","2":"VC","3":"0.5","_rn_":"5"},{"1":"10.0","2":"VC","3":"0.5","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code># unique observations grouped by delivery method and dosage level
+ToothGrowth %&gt;% select(supp, dose) %&gt;% group_by(supp, dose) %&gt;% summarize(count=n())</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["supp"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["dose"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["count"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"OJ","2":"0.5","3":"10"},{"1":"OJ","2":"1.0","3":"10"},{"1":"OJ","2":"2.0","3":"10"},{"1":"VC","2":"0.5","3":"10"},{"1":"VC","2":"1.0","3":"10"},{"1":"VC","2":"2.0","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<pre class="r"><code># summary of tooth length data grouped by delivery method and dosage level
+by(data = ToothGrowth$len, INDICES = list(ToothGrowth$supp, ToothGrowth$dose), summary)</code></pre>
+<pre><code>## : OJ
+## : 0.5
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    8.20    9.70   12.25   13.23   16.18   21.50 
+## -------------------------------------------------------- 
+## : VC
+## : 0.5
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    4.20    5.95    7.15    7.98   10.90   11.50 
+## -------------------------------------------------------- 
+## : OJ
+## : 1
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   14.50   20.30   23.45   22.70   25.65   27.30 
+## -------------------------------------------------------- 
+## : VC
+## : 1
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   13.60   15.28   16.50   16.77   17.30   22.50 
+## -------------------------------------------------------- 
+## : OJ
+## : 2
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   22.40   24.57   25.95   26.06   27.07   30.90 
+## -------------------------------------------------------- 
+## : VC
+## : 2
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   18.50   23.38   25.95   26.14   28.80   33.90</code></pre>
+</div>
+<div id="exploratory-data-analysis" class="section level2">
+<h2>Exploratory Data Analysis</h2>
+<p>Perform some basic exploratory data analyses of the data.</p>
 </div>
 <div id="confidence-intervals" class="section level2">
 <h2>Confidence Intervals</h2>
@@ -338,14 +399,6 @@ data(ToothGrowth)</code></pre>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
-<p>Following results can be concluded from the above hypothesis testing</p>
-<ul>
-<li><p>Supplement type has no effect on tooth growth.</p></li>
-<li><p>Increasing the dose level leads to increased tooth growth.</p></li>
-</ul>
-<p>===============</p>
-<p>Both the confidence intervals and hypothesis tests indicate that at lower dosages, specifically 0.5 mg and 1 mg, the Orange Juice delivery method results in longer teeth than the Ascorbic Acid. However, at higher dosages, specifically 2 mg, there appears to be little difference and certainly not enough to reject the null hypothesis that they have the same effect.</p>
-<p>However, the plot of means and confidence intervals does hint at a flattening out of effectiveness when using the Orange Juice method at a faster rate than when using the Ascorbic Acid method. This might warrant further exploration to see if Ascorbic Acid results in greater tooth length than Orange Juice and higher dosages.</p>
 </div>
 
 
