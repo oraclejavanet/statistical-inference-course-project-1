@@ -3,12 +3,6 @@ title: "Statistical Inference Course Project (Part 2)"
 author: "Jeffrey M. Hunter"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
-  html_document:
-    toc: yes
-    toc_float: yes
-    theme: cosmo
-    keep_md: no
-    df_print: paged
   pdf_document:
     toc: yes
     df_print: kable
@@ -16,6 +10,12 @@ output:
     fig_caption: yes
     highlight: tango
     dev: pdf
+  html_document:
+    toc: yes
+    toc_float: yes
+    theme: cosmo
+    keep_md: no
+    df_print: paged
 ---
 
 ## Overview
@@ -242,5 +242,22 @@ The observed p-value `r round(t4$p.value, 4)` is greater than 0.05 and the
 null hypothesis so we fail to reject the null hypothesis.
 
 ## Conclusion
+
+This analysis employed the use of statistical inference to compare the effects
+of different doses of vitamin C using two delivery methods to study the tooth
+growth in guinea pigs. 
+
+### Conclusions
+
+Based on exploratory data analysis and configured by hypothesis tests and the
+associated confidence intervals, ...
+
+*Pending*
+
+### Assumptions
+
+*Pending*
+
+
 
 
