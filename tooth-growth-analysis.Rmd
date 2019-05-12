@@ -3,6 +3,12 @@ title: "Statistical Inference Course Project (Part 2)"
 author: "Jeffrey M. Hunter"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    theme: cosmo
+    keep_md: no
+    df_print: paged
   pdf_document:
     toc: yes
     df_print: kable
@@ -10,12 +16,6 @@ output:
     fig_caption: yes
     highlight: tango
     dev: pdf
-  html_document:
-    toc: yes
-    toc_float: yes
-    theme: cosmo
-    keep_md: no
-    df_print: paged
 ---
 
 ## Overview
@@ -244,20 +244,27 @@ null hypothesis so we fail to reject the null hypothesis.
 ## Conclusion
 
 This analysis employed the use of statistical inference to compare the effects
-of different doses of vitamin C using two delivery methods to study the tooth
-growth in guinea pigs. 
-
-### Conclusions
-
-Based on exploratory data analysis and configured by hypothesis tests and the
-associated confidence intervals, ...
-
-*Pending*
+of different dosage levels of vitamin C using two delivery methods to study the
+tooth growth in guinea pigs. 
 
 ### Assumptions
 
-*Pending*
+* Tooth growth follows a normal distibution.
 
+* The two variables, dosage levels and delivery method, must be independent and
+  identicaly distributed.
 
+* No other confounding factors were included that would effect tooth growth.
 
+* The population was comprised of similar guinea pigs.
 
+### Conclusions
+
+Based on exploratory data analysis and confirmed by hypothesis tests and
+associated confidence intervals, we can safely conclude that an increase in
+dosage levels of vitamin C increases tooth growth. However, when studying tooth
+growth as a function of both dosage level and delivery method, it is
+inconclusive whether or not the delivery method had any effect on tooth growth.
+While it started to appear that orange juice was more effective than ascorbic
+acid, this only occurred at dosage levels of 0.5 to 1 mg/day. At 2 mg/day, both
+delivery methods were equally as effective.
