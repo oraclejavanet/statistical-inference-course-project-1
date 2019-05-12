@@ -317,11 +317,6 @@ div.tocify {
     library(ggplot2)
 }</code></pre>
 <pre><code>## Loading required package: ggplot2</code></pre>
-<pre class="r"><code>if (!require(dplyr, warn.conflicts = FALSE)) {
-    install.packages(&quot;dplyr&quot;, repos = &quot;http://cran.us.r-project.org&quot;)
-    library(dplyr, warn.conflicts = FALSE)
-}</code></pre>
-<pre><code>## Loading required package: dplyr</code></pre>
 <p>Load ToothGrowth dataset.</p>
 <pre class="r"><code>library(datasets)
 data(ToothGrowth)</code></pre>
@@ -490,15 +485,16 @@ paste0(&quot;p-value = &quot;, round(t4$p.value, 4))</code></pre>
 <div id="assumptions" class="section level3">
 <h3>Assumptions</h3>
 <ul>
-<li><p>Tooth growth follows a normal distibution.</p></li>
-<li><p>The two variables, dosage levels and delivery method, must be independent and identicaly distributed.</p></li>
+<li><p>Tooth growth follows a normal distribution.</p></li>
+<li><p>The two variables, dosage levels and delivery method, are independent and identically distributed.</p></li>
 <li><p>No other confounding factors were included that would effect tooth growth.</p></li>
 <li><p>The population was comprised of similar guinea pigs.</p></li>
+<li><p>A p-value less than or greater than a significance level of 5% will be used as the threshold to reject or accept the null hypothesis.</p></li>
 </ul>
 </div>
 <div id="conclusions" class="section level3">
 <h3>Conclusions</h3>
-<p>Based on exploratory data analysis and confirmed by hypothesis tests and associated confidence intervals, we can safely conclude that an increase in dosage levels of vitamin C increases tooth growth. However, when studying tooth growth as a function of both dosage level and delivery method, it is inconclusive whether or not the delivery method had any effect on tooth growth. While it started to appear that orange juice was more effective than ascorbic acid, this only occurred at dosage levels of 0.5 to 1 mg/day. At 2 mg/day, both delivery methods were equally as effective.</p>
+<p>Based on exploratory data analysis and confirmed by hypothesis tests and associated confidence intervals, we can safely infer that an increase in dosage levels of vitamin C increases tooth growth. However, when studying tooth growth as a function of both dosage level and delivery method, it is inconclusive whether or not the delivery method had any effect on tooth growth. While it started to appear that orange juice was more effective than ascorbic acid, this only occurred at dosage levels of 0.5 to 1 mg/day. At 2 mg/day, both delivery methods were equally as effective.</p>
 </div>
 </div>
 

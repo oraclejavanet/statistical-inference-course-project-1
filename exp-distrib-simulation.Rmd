@@ -3,6 +3,12 @@ title: "Statistical Inference Course Project (Part 1)"
 author: "Jeffrey M. Hunter"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    theme: cosmo
+    keep_md: no
+    df_print: paged
   pdf_document:
     toc: yes
     df_print: paged
@@ -10,12 +16,6 @@ output:
     fig_caption: yes
     highlight: tango
     dev: pdf
-  html_document:
-    toc: yes
-    toc_float: yes
-    theme: cosmo
-    keep_md: no
-    df_print: paged
 ---
 
 ```{r setup, include = FALSE}
