@@ -1,8 +1,22 @@
-# Statistical Inference Course Project 1
+# Statistical Inference Course Project
 
 **Jeffrey M. Hunter**
 
 May 10, 2019
+
+## Project
+
+Peer-graded Assignment: Course Project
+
+**Analysis report available on RPubs**
+
+* <a href="http://rpubs.com/OracleJavaNet/498056">Explore the Central Limit Theorem using the Exponential Distribution in R</a>
+* <a href="http://rpubs.com/OracleJavaNet/498059">An Analysis of Tooth Growth in Guinea Pigs</a>
+
+**Analysis report available on GitHub**
+
+* <a href="http://htmlpreview.github.io/?https://github.com/oraclejavanet/reproducible-research-course-project-2/blob/master/storm-data-analysis.html" target="_blank">Explore the Central Limit Theorem using the Exponential Distribution in R</a>
+* <a href="http://htmlpreview.github.io/?https://github.com/oraclejavanet/reproducible-research-course-project-2/blob/master/storm-data-analysis.html" target="_blank">An Analysis of Tooth Growth in Guinea Pigs</a>
 
 The project consists of two parts.
 

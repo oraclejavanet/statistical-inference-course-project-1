@@ -22,7 +22,17 @@ output:
     keep_md: no
 ---
 
-## Overview
+## Course Project
+
+**Statistical Inference Course Project**
+
+Peer-graded Assignment
+
+* This course project is available on GitHub
+
+    <a href="https://github.com/oraclejavanet/statistical-inference-course-project-1" target="_top">Statistical Inference Course Project</a>
+
+## Synopsis
 
 In this second part of a two-part project assignment, we are being asked to
 investigate the effect of vitamin C on tooth growth in guinea pigs.
@@ -50,23 +60,32 @@ documentation using `?ToothGrowth`.
 ## Environment Setup
 
 ```{r setup, include = FALSE}
+# set knitr options
 knitr::opts_chunk$set(echo = TRUE, fig.path='figures/')
+
+# clear global workspace (including hidden objects) for this session
+rm(list = ls(all.names = TRUE))
+
+# free up memory and display statistics on free memory
+gc()
+
+# disable scientific notation for numbers
+options(scipen = 1)
 ```
 
 Load packages used in this analysis.
 
 ```{r load-packages, echo = TRUE}
 if (!require(ggplot2)) {
-    install.packages("ggplot2", repos = "http://cran.us.r-project.org")
+    install.packages("ggplot2")
     library(ggplot2)
 }
 ```
 
-Load ToothGrowth dataset.
+Display session information.
 
-```{r load-data, echo = TRUE}
-library(datasets)
-data(ToothGrowth)
+```{r display-session-info, echo = TRUE}
+sessionInfo()
 ```
 
 ## Basic Data Summary
