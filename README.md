@@ -15,8 +15,8 @@ Peer-graded Assignment: Course Project
 
 **Analysis report available on GitHub**
 
-* <a href="http://htmlpreview.github.io/?https://github.com/oraclejavanet/reproducible-research-course-project-2/blob/master/storm-data-analysis.html" target="_blank">Explore the Central Limit Theorem using the Exponential Distribution in R</a>
-* <a href="http://htmlpreview.github.io/?https://github.com/oraclejavanet/reproducible-research-course-project-2/blob/master/storm-data-analysis.html" target="_blank">An Analysis of Tooth Growth in Guinea Pigs</a>
+* <a href="http://htmlpreview.github.io/?https://github.com/oraclejavanet/statistical-inference-course-project-1/blob/master/exp-distrib-simulation.html" target="_blank">Explore the Central Limit Theorem using the Exponential Distribution in R</a>
+* <a href="http://htmlpreview.github.io/?https://github.com/oraclejavanet/statistical-inference-course-project-1/blob/master/tooth-growth-analysis.html" target="_blank">An Analysis of Tooth Growth in Guinea Pigs</a>
 
 The project consists of two parts.
 
