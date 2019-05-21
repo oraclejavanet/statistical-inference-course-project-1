@@ -11,11 +11,15 @@ output:
     df_print: paged
   pdf_document:
     toc: yes
-    df_print: paged
+    df_print: kable
     number_sections: false
     fig_caption: yes
     highlight: tango
     dev: pdf
+  word_document:
+    toc: yes
+    df_print: paged
+    keep_md: no
 ---
 
 ```{r setup, include = FALSE}

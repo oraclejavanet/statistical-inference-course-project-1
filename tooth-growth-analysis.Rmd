@@ -16,6 +16,10 @@ output:
     fig_caption: yes
     highlight: tango
     dev: pdf
+  word_document:
+    toc: yes
+    df_print: paged
+    keep_md: no
 ---
 
 ## Overview

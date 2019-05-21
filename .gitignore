@@ -8,11 +8,26 @@
 # https://www.gitignore.io/
 
 # +--------------------------------------------------+
+# | Project                                          |
+# +--------------------------------------------------+
+
+data/
+packrat/lib*/
+.Rproj.user
+rsconnect/
+
+# +--------------------------------------------------+
 # | R                                                |
 # +--------------------------------------------------+
 
+*.nb.html
+
 # TODO file
 TODO.txt
+
+# README
+README.html
+README.nb.html
 
 # History files
 .Rhistory
